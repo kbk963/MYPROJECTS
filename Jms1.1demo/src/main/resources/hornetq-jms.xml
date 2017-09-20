@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns="urn:hornetq"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="urn:hornetq /schema/hornetq-jms.xsd">
+    <connection-factory name="JDConnectionFactory">
+        <connectors>
+            <connector-ref connector-name="in-vm"/>
+        </connectors>
+        <entries>
+            <entry name="JDConnectionFactory"/>
+        </entries>
+    </connection-factory>
+ 
+    <queue name="JDQueue">
+        <entry name="/queue/JDQueue"/>
+    </queue>
+</configuration>
