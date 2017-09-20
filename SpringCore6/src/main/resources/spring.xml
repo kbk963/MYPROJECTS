@@ -1,0 +1,16 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="car" class="com.tek.demo.Car">
+		<constructor-arg value="Honda"/>
+		<constructor-arg value="600000"/>
+		<constructor-arg ref="engine"/>
+	</bean>
+
+	<bean id="engine" class="com.tek.demo.Engine">
+	<constructor-arg value="Benz Engine"/>
+	<constructor-arg value="700"/>
+	</bean>
+</beans>
