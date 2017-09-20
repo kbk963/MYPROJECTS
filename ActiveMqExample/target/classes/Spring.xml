@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans">
+
+
+	<bean class="org.apache.activemq.ActiveMQConnectionFactory" id="connectionFactory">
+
+		<property value="tcp://localhost:61617" name="brokerURL" />
+
+	</bean>
+
+	<bean class="org.apache.activemq.command.ActiveMQQueue" id="messageDestination">
+
+		<constructor-arg value="messageQueue1" />
+
+	</bean>
+
+
+	<bean class="org.springframework.jms.core.JmsTemplate" id="jmsTemplate">
+
+		<property name="connectionFactory" ref="connectionFactory" />
+
+		<property value="10000" name="receiveTimeout" />
+
+	</bean>
+
+	<bean class="com.tek.demo.producer.Consumer" id="consumer">
+
+		<property name="jmsTemplate" ref="jmsTemplate" />
+
+		<property name="destination" ref="messageDestination" />
+
+	</bean>
+
+	<bean class="com.tek.demo.producer.producer" id="producer">
+
+		<property name="jmsTemplate" ref="jmsTemplate" />
+
+		<property name="destination" ref="messageDestination" />
+
+	</bean>
+
+</beans>
